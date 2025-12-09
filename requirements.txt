@@ -1,0 +1,32 @@
+# Core Azure AI Dependencies
+azure-ai-projects==1.0.0
+azure-identity==1.15.0
+azure-ai-agents==1.0.0
+
+# Azure Services
+azure-search-documents==11.4.0
+azure-core==1.29.5
+
+# Semantic Kernel
+semantic-kernel==0.9.0
+
+# AI/ML
+openai==1.6.1
+
+# Data Processing
+pandas==2.1.4
+numpy==1.26.2
+
+# API Integration
+requests==2.31.0
+httpx==0.25.2
+jsonref==1.1.0
+
+# Environment Management
+python-dotenv==1.0.0
+
+# Development
+pytest==7.4.3
+pytest-asyncio==0.21.1
+black==23.12.1
+

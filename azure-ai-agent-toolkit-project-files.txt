@@ -1,0 +1,314 @@
+=== AZURE AI AGENT TOOLKIT - PROJECT FILES ===
+
+Copy each section below into the corresponding file in your project.
+
+
+================================================================================
+FILE: README.md
+================================================================================
+
+# 🤖 Azure AI Agent Toolkit
+
+A comprehensive Python toolkit for building intelligent AI agents using Azure AI Services, featuring RAG capabilities, multi-agent orchestration, and enterprise integrations.
+
+![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Azure](https://img.shields.io/badge/azure-AI%20Services-0078D4)
+
+## 📋 Overview
+
+Azure AI Agent Toolkit provides a production-ready framework for building sophisticated AI agents with:
+
+- **🔍 RAG (Retrieval Augmented Generation)** - Integration with Azure AI Search for knowledge-based responses
+- **🛠️ Function Calling** - Custom tools and external API integrations
+- **📊 Code Interpreter** - Execute Python code and analyze data
+- **🔗 Multi-Agent Orchestration** - Sequential workflows with Semantic Kernel
+- **🎫 Enterprise Integrations** - Freshdesk, TripAdvisor, Email, and more
+- **🔐 Secure by Design** - Environment-based configuration management
+
+## ✨ Features
+
+### Core Agent Types
+
+1. **Simple Chat Agent** - Basic conversational AI
+2. **Code Interpreter Agent** - Execute code and analyze CSV data
+3. **RAG Agent** - Knowledge retrieval with Azure AI Search
+4. **Function Calling Agent** - Weather, API calls, custom tools
+5. **File Search Agent** - PDF/Document analysis
+6. **Multi-Agent System** - Sequential orchestration workflows
+
+### Integrations
+
+- ✅ Freshdesk ticket creation
+- ✅ TripAdvisor API for travel recommendations
+- ✅ Email sending via Azure Logic Apps
+- ✅ OpenAPI/Swagger integration support
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Python 3.8 or higher
+- Azure subscription with AI Services
+- Azure AI Project created
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/azure-ai-agent-toolkit.git
+cd azure-ai-agent-toolkit
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Copy environment template
+cp .env.example .env
+
+# Edit .env with your Azure credentials
+nano .env
+```
+
+### Basic Usage
+
+```python
+from src.utils.azure_client import AzureClientManager
+
+# Initialize agent
+manager = AzureClientManager()
+client = manager.initialize()
+
+# Start chatting
+agent = client.agents.create_agent(
+    model="gpt-4o",
+    name="my-agent",
+    instructions="You are a helpful assistant."
+)
+```
+
+## 📸 Screenshots
+
+### Agent Conversation
+![Agent Chat](./assets/screenshots/agent_chat.png)
+
+### RAG Implementation
+![RAG Search](./assets/screenshots/rag_search.png)
+
+### Multi-Agent Orchestration
+![Multi-Agent](./assets/screenshots/multi_agent.png)
+
+## 🏗️ Architecture
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    User Application                      │
+└─────────────────────────────────────────────────────────┘
+                          │
+                          ▼
+┌─────────────────────────────────────────────────────────┐
+│              Azure AI Agent Framework                    │
+│  ┌──────────┐  ┌──────────┐  ┌──────────────────┐     │
+│  │  Agents  │  │  Tools   │  │  Orchestration   │     │
+│  └──────────┘  └──────────┘  └──────────────────┘     │
+└─────────────────────────────────────────────────────────┘
+                          │
+            ┌─────────────┼─────────────┐
+            ▼             ▼             ▼
+    ┌──────────┐  ┌──────────┐  ┌──────────┐
+    │  GPT-4   │  │ AI Search│  │  APIs    │
+    │  Models  │  │   RAG    │  │ External │
+    └──────────┘  └──────────┘  └──────────┘
+```
+
+## 📚 Documentation
+
+- [Setup Guide](./docs/setup_guide.md)
+- [Architecture](./docs/architecture.md)
+- [API Reference](./docs/api_reference.md)
+- [Examples](./docs/examples.md)
+
+## 🛣️ Roadmap
+
+### Phase 1 (Current)
+- [x] Basic agent implementations
+- [x] RAG with Azure AI Search
+- [x] Function calling framework
+- [x] Multi-agent orchestration
+
+### Phase 2 (Q1 2025)
+- [ ] Streaming responses
+- [ ] Agent memory persistence
+- [ ] Advanced tool chaining
+- [ ] Web UI dashboard
+
+## 🤝 Contributing
+
+We welcome contributions! Please see [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+## 📄 License
+
+This project is licensed under the MIT License - see [LICENSE](./LICENSE).
+
+## 📞 Support
+
+- **Issues**: GitHub Issues
+- **Discussions**: GitHub Discussions
+
+---
+
+Made with ❤️ for the Azure AI community
+
+
+
+================================================================================
+FILE: requirements.txt
+================================================================================
+
+# Core Azure AI Dependencies
+azure-ai-projects==1.0.0
+azure-identity==1.15.0
+azure-ai-agents==1.0.0
+
+# Azure Services
+azure-search-documents==11.4.0
+azure-core==1.29.5
+
+# Semantic Kernel
+semantic-kernel==0.9.0
+
+# AI/ML
+openai==1.6.1
+
+# Data Processing
+pandas==2.1.4
+numpy==1.26.2
+
+# API Integration
+requests==2.31.0
+httpx==0.25.2
+jsonref==1.1.0
+
+# Environment Management
+python-dotenv==1.0.0
+
+# Development
+pytest==7.4.3
+pytest-asyncio==0.21.1
+black==23.12.1
+
+
+
+================================================================================
+FILE: .env.example
+================================================================================
+
+# Azure Configuration
+AZURE_SUBSCRIPTION_ID=your-subscription-id
+AZURE_RESOURCE_GROUP=your-resource-group
+AZURE_PROJECT_NAME=your-project-name
+AZURE_OPENAI_API_KEY=your-api-key
+
+# Endpoints
+PROJECT_ENDPOINT=https://your-project.eastus.projects.azureai.azure.com
+AZURE_PROJECT_ENDPOINT=https://ai.azure.com
+
+# Authentication
+TENANT_ID=your-tenant-id
+CLIENT_ID=your-client-id
+CLIENT_SECRET=your-client-secret
+
+# Model
+MODEL_DEPLOYMENT_NAME=gpt-4o
+
+# External APIs
+OPENWEATHER_MAP_API_KEY=your-weather-key
+FRESHDESK_DOMAIN=your-domain.freshdesk.com
+FRESHDESK_API_KEY=your-freshdesk-key
+TRIPADVISOR_API_KEY=your-tripadvisor-key
+LOGIC_APPS_FULL_URL=your-logic-app-url
+
+# Settings
+ENVIRONMENT=development
+LOG_LEVEL=INFO
+
+
+
+================================================================================
+FILE: .gitignore
+================================================================================
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Environment
+.env
+.env.local
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Azure
+.azure/
+
+
+
+================================================================================
+FILE: setup.py
+================================================================================
+
+from setuptools import setup, find_packages
+
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
+
+setup(
+    name="azure-ai-agent-toolkit",
+    version="1.0.0",
+    author="Your Name",
+    author_email="your.email@example.com",
+    description="A toolkit for building AI agents with Azure AI Services",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    packages=find_packages(),
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    python_requires=">=3.8",
+    install_requires=[
+        "azure-ai-projects>=1.0.0",
+        "azure-identity>=1.15.0",
+        "python-dotenv>=1.0.0",
+    ],
+)
+
+

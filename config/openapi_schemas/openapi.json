@@ -1,0 +1,192 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Yahoo Finance Stock Quote API",
+        "description": "API to fetch stock market data for a given ticker symbol.",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://yahoo-finance15.p.rapidapi.com/api/v1"
+        }
+    ],
+    "paths": {
+        "/markets/quote": {
+            "get": {
+                "operationId": "getStockQuote",
+                "summary": "Get stock quote",
+                "description": "Fetches stock market data for a given ticker symbol.",
+                "parameters": [
+                    {
+                        "name": "ticker",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Stock ticker symbol (e.g., AAPL for Apple Inc.)"
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "STOCKS"
+                            ]
+                        },
+                        "description": "Type of asset (STOCKS is currently supported)"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "meta": {
+                                            "type": "object",
+                                            "properties": {
+                                                "version": {
+                                                    "type": "string"
+                                                },
+                                                "status": {
+                                                    "type": "integer"
+                                                },
+                                                "copywrite": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        },
+                                        "body": {
+                                            "type": "object",
+                                            "properties": {
+                                                "symbol": {
+                                                    "type": "string"
+                                                },
+                                                "companyName": {
+                                                    "type": "string"
+                                                },
+                                                "stockType": {
+                                                    "type": "string"
+                                                },
+                                                "exchange": {
+                                                    "type": "string"
+                                                },
+                                                "primaryData": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "lastSalePrice": {
+                                                            "type": "string"
+                                                        },
+                                                        "netChange": {
+                                                            "type": "string"
+                                                        },
+                                                        "percentageChange": {
+                                                            "type": "string"
+                                                        },
+                                                        "deltaIndicator": {
+                                                            "type": "string"
+                                                        },
+                                                        "lastTradeTimestamp": {
+                                                            "type": "string"
+                                                        },
+                                                        "isRealTime": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "bidPrice": {
+                                                            "type": "string"
+                                                        },
+                                                        "askPrice": {
+                                                            "type": "string"
+                                                        },
+                                                        "bidSize": {
+                                                            "type": "string"
+                                                        },
+                                                        "askSize": {
+                                                            "type": "string"
+                                                        },
+                                                        "volume": {
+                                                            "type": "string"
+                                                        },
+                                                        "currency": {
+                                                            "type": "string",
+                                                            "nullable": true
+                                                        }
+                                                    }
+                                                },
+                                                "secondaryData": {
+                                                    "type": "object",
+                                                    "nullable": true
+                                                },
+                                                "marketStatus": {
+                                                    "type": "string"
+                                                },
+                                                "assetClass": {
+                                                    "type": "string"
+                                                },
+                                                "keyStats": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "fiftyTwoWeekHighLow": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "label": {
+                                                                    "type": "string"
+                                                                },
+                                                                "value": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        },
+                                                        "dayrange": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "label": {
+                                                                    "type": "string"
+                                                                },
+                                                                "value": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request due to missing or incorrect parameters"
+                    },
+                    "401": {
+                        "description": "Unauthorized - Invalid API key"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                },
+                "security": [
+                    {
+                        "apiKeyAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "apiKeyAuth": {
+                "type": "apiKey",
+                "in": "header",
+                "name": "x-rapidapi-key"
+            }
+        }
+    }
+}
